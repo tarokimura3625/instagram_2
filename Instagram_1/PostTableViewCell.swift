@@ -55,8 +55,20 @@ class PostTableViewCell: UITableViewCell {
             
             // コメントの表示
             
-        self.commentLabel.text = "\(postData.name!) : \(postData.comment)"
+            self.commentLabel.text = "\(postData.name!) : \(postData.comment)"
+            
+            var allComment = ""
+            
+            //postData.commentsの中から要素をひとつずつ取り出すのを繰り返す、というのがcomment
+            for comment in postData.comment{
+                //comment + comment = allCommentである
+                allComment += comment + "\n"
+                //commentLabelに表示するのはallComment（commentを足していったもの）である
+               
             }
+            
+            self.commentLabel.text = allComment
+        }
         // コメントボタンの表示
         if postData.isComment {
             let buttonImage = UIImage(named: "like_exist")
@@ -64,8 +76,7 @@ class PostTableViewCell: UITableViewCell {
         } else {
             let buttonImage = UIImage(named: "massage")
             self.commentButton.setImage(buttonImage, for: .normal)
-        
-        
+            
         }
         // いいね数の表示
         let likeNumber = postData.likes.count
@@ -78,8 +89,8 @@ class PostTableViewCell: UITableViewCell {
         } else {
             let buttonImage = UIImage(named: "like_none")
             self.likeButton.setImage(buttonImage, for: .normal)
-        
+            
         }
-        }
-        }
+    }
+}
 
